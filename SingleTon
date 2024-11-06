@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Singleton {
+private:
+
+    string nameHospital, Priem;
+
+    static Singleton* instancePtr;
+
+    Singleton()
+    {
+    }
+
+public:
+
+    Singleton(const Singleton& obj) = delete;
+
+    static Singleton* getInstance()
+    {
+        return instancePtr;
+    }
+
+    void setValues(string name,
+        string priemka)
+    {
+        this->nameHospital = name;
+        this->Priem = priemka;
+    }
+
+    void print()
+    {
+        cout << nameHospital << " Number of primka: " <<
+            Priem << "." << endl;
+    }
+};
+
+
+Singleton* Singleton::instancePtr
+= new Singleton();
+
+int main()
+{
+    Singleton* gfg = Singleton::getInstance();
+    gfg->setValues("Hlopina 47", "Number 1");
+    gfg->print();
+    cout << "Address of gfg : " << gfg << endl;
+
+    cout << endl;
+
+    Singleton* geeksForGeeks
+        = Singleton::getInstance();
+    geeksForGeeks->setValues("Elizavetinskaya", "Number 1");
+    geeksForGeeks->print();
+    cout << "Address of geeksForGeeks : " <<geeksForGeeks << endl;
+
+    return 0;
+}
